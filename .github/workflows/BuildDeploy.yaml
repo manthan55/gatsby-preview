@@ -10,7 +10,7 @@ jobs:
   Build:
     env:
       CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-      CONTENTFUL_PREVIEW_TOKEN: ${{ secrets.CONTENTFUL_PREVIEW_TOKEN }}
+      CONTENTFUL_PREVIEW_KEY: ${{ secrets.CONTENTFUL_PREVIEW_KEY }}
       CONTENTFUL_PREVIEW_HOST: ${{ secrets.CONTENTFUL_PREVIEW_HOST }}
     runs-on: windows-2019
     steps:
