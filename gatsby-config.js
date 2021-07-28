@@ -12,10 +12,10 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.SPACE_ID,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.PREVIEW_KEY,
-        host: `preview.contentful.com`,
+        accessToken: process.env.CONTENTFUL_PREVIEW_KEY,
+        host: process.env.CONTENTFUL_PREVIEW_HOST,
       },
     },
     {
