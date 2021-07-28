@@ -20,6 +20,9 @@ jobs:
       - name: npm install
         run: npm install
 
+      - name: npm build
+        run: npm run build
+
       - name: Zip public folder
         run: 7z a public.zip ./public/*
 
