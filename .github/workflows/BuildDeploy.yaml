@@ -1,0 +1,33 @@
+name: gatby-preview
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch: {}
+ 
+jobs:
+
+  Build:
+    env:
+      CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+      CONTENTFUL_PREVIEW_KEY: ${{ secrets.CONTENTFUL_PREVIEW_KEY }}
+      CONTENTFUL_PREVIEW_HOST: ${{ secrets.CONTENTFUL_PREVIEW_HOST }}
+    runs-on: windows-2019
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: npm install
+        run: npm install
+
+      - name: npm build
+        run: npm run build
+
+      - name: Zip public folder
+        run: 7z a public.zip ./public/*
+
+      - name: Upload artifact 
+        uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: public.zip
