@@ -24,9 +24,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: bacongobbler/azure-blob-storage-upload@v1.2.0
+      - name: Upload to Blob Storage
+        uses: bacongobbler/azure-blob-storage-upload@v1.2.0
         with:
           source_dir: public
           container_name: gatsby-preview
-          connection_string: ${{ env.AZURE_STORAGE_ACCOUNT_CONNECTION_STRING }}
+          connection_string: ${{ secrets.AZURE_STORAGE_ACCOUNT_CONNECTION_STRING }}
           sync: true
