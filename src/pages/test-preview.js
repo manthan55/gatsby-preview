@@ -4,10 +4,15 @@ import { graphql } from 'gatsby';
 function TestPreview(props){
 
     console.log(props.data)
+    const composePageData = props.data.allContentfulTestPreview.nodes[0]
+console.log(composePageData);
 
-    return <div>
-        testPreview page
-    </div>
+    return (
+        <div>
+            <h1>{composePageData.title}</h1>
+            <p>{composePageData.description.description}</p>
+        </div>
+    )
 }
 
 
