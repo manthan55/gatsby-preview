@@ -7,27 +7,26 @@ on:
  
 jobs:
 
-  Build:
+  BuildDeploy:
     env:
       CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
       CONTENTFUL_PREVIEW_KEY: ${{ secrets.CONTENTFUL_PREVIEW_KEY }}
       CONTENTFUL_PREVIEW_HOST: ${{ secrets.CONTENTFUL_PREVIEW_HOST }}
+      AZURE_STORAGE_ACCOUNT_CONNECTION_STRING: ${{ secrets.AZURE_STORAGE_ACCOUNT_CONNECTION_STRING }}
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: npm install
+      - name: Restore Dependencies
         run: npm install
 
-      - name: npm build
+      - name: Build
         run: npm run build
 
-      - name: Zip public folder
-        run: 7z a public.zip ./public/*
-
-      - name: Upload artifact 
-        uses: actions/upload-artifact@v2
+      - uses: bacongobbler/azure-blob-storage-upload@v1.2.0
         with:
-          name: public
-          path: public.zip
+          source_dir: public
+          container_name: gatsby-preview
+          connection_string: ${{ env.AZURE_STORAGE_ACCOUNT_CONNECTION_STRING }}
+          sync: true
