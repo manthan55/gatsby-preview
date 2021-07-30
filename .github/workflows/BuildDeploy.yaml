@@ -18,6 +18,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Using cached node_modules
+        uses: actions/cache@v2
+        with:
+         path: "**/node_modules"
+         key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Using cached .cache
+        uses: actions/cache@v2
+        with:
+         path: ".cache"
+         key: ${{ runner.os }}-cache-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Using cached public
+        uses: actions/cache@v2
+        with:
+         path: "public"
+         key: ${{ runner.os }}-public-${{ hashFiles('**/package-lock.json') }}
+
       - name: Restore Dependencies
         run: npm install
 
