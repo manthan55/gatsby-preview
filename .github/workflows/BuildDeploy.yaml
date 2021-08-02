@@ -49,12 +49,12 @@ jobs:
       #     container_name: gatsby-preview
       #     source_folder: public
 
-      # - name: Upload to Blob Storage 
-      #   uses: fixpoint/azblob-upload-artifact@v4
-      #   with:
-      #     connection-string: ${{ env.AZURE_STORAGE_ACCOUNT_CONNECTION_STRING }}
-      #     name: gatsby-preview
-      #     path: public
+      - name: Upload to Blob Storage 
+        uses: fixpoint/azblob-upload-artifact@v4
+        with:
+          connection-string: ${{ env.AZURE_STORAGE_ACCOUNT_CONNECTION_STRING }}
+          name: gatsby-preview
+          path: public
 
       # - name: Upload to Blob Storage
       #   uses: bacongobbler/azure-blob-storage-upload@v1.2.0
