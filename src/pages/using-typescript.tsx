@@ -6,9 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 type DataProps = {
-  site: {
-    buildTime: string
-  }
+
 }
 
 const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
@@ -25,8 +23,7 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
       run <em>tsc --init</em> to create a <em>.tsconfig</em> file.
     </p>
     <p>
-      You're currently on the page "{path}" which was built on{" "}
-      {data.site.buildTime}.
+      You're currently on the page "{path}"
     </p>
     <p>
       To learn more, head over to our{" "}
@@ -40,11 +37,3 @@ const UsingTypescript: React.FC<PageProps<DataProps>> = ({ data, path }) => (
 )
 
 export default UsingTypescript
-
-export const query = graphql`
-  {
-    site {
-      buildTime(formatString: "YYYY-MM-DD hh:mm a z")
-    }
-  }
-`
