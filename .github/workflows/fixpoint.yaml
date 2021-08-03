@@ -20,19 +20,19 @@ jobs:
         uses: actions/cache@v2
         with:
          path: "**/node_modules"
-         key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+         key: ${{ runner.os }}-node-modules-v1-${{ hashFiles('**/package-lock.json') }}
 
       - name: Using cached .cache
         uses: actions/cache@v2
         with:
          path: ".cache"
-         key: ${{ runner.os }}-cache-${{ hashFiles('**/package-lock.json') }}
+         key: ${{ runner.os }}-cache-v1-${{ hashFiles('**/package-lock.json') }}
 
       - name: Using cached public
         uses: actions/cache@v2
         with:
          path: "public"
-         key: ${{ runner.os }}-public-${{ hashFiles('**/package-lock.json') }}
+         key: ${{ runner.os }}-public-v1-${{ hashFiles('**/package-lock.json') }}
 
       - name: Restore Dependencies
         run: npm install
