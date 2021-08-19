@@ -1,4 +1,5 @@
-require('dotenv').config();
+require('dotenv').config({ path: 'delivery.env' });
+// require('dotenv').config({ path: 'preview.env' });
 
 module.exports = {
   siteMetadata: {
@@ -14,10 +15,8 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_DELIVERY_KEY,
-        // Preview
-        // accessToken: process.env.CONTENTFUL_PREVIEW_KEY,
-        // host: process.env.CONTENTFUL_PREVIEW_HOST
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST
       },
     },
     {
